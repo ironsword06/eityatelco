@@ -1,0 +1,8 @@
+<button
+(click)="clickButton()"
+  [ngClass]="buttonColor"
+>
+  <i *ngIf="icon"  class="px-2" [ngClass]="icon"></i>
+  {{ buttonText }}
+</button>
+

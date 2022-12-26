@@ -1,0 +1,144 @@
+<!-- <div class="bgc">
+ 
+<div class="row" >  
+<div class="col-3">
+
+
+  <h1 class="display-6" > Search Filter</h1>
+  <ul class="list-group mt-5">
+    <etiya-input [(ngModel)]="customerFilter.id" [inputLabel]="'ID Number'" [inputType]="'number'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.customerId"  [inputLabel]="'Customer ID'" [inputType]="'string'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.accountNumber" [inputLabel]="'Account Number'" [inputType]="'string'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.gsmNumber" [inputLabel]="'GSM Number'" [inputType]="'string'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.firstName" [inputLabel]="'First Name'" [inputType]="'string'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.lastName" [inputLabel]="'Last Name'" [inputType]="'string'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.orderNumber" [inputLabel]="'Order Number'" [inputType]="'string'"></etiya-input>
+  </ul>
+
+
+  <div class="modal-footer d-flex justify-content-between" >
+    <etiya-button (onClickButton)="getListCustomers()" [icon]="'fa-solid fa-search'" [buttonColor]="'bg-orange'" [buttonText]="'Search'"></etiya-button>
+    <etiya-button (onClickButton)="clearFilter()" [icon]="'fa-solid fa-eraser'" [buttonColor]="'bg-gray'" [buttonText]="'Clear'"  ></etiya-button>
+  </div> 
+  </div>
+
+  <div class="col-8 ">    
+        <h1 class="display-6" >Search Results</h1>
+    <table class="table mt-5">
+
+        <thead class="thead-light" >
+          <tr>
+            <th ><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+            <th scope="col">Customer ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">ID number</th>
+
+          </tr>
+        </thead >
+        <ng-container *ngIf="x === 0; else showCustomerList">
+          <div class="alert alert-primary" role="alert">
+            There is no customer with the given filters.
+          </div>
+        </ng-container>
+        <ng-template #showCustomerList
+        ngFor
+        let-customer
+        [ngForOf]="customers"
+      >
+        <tbody>
+          <tr>
+            <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+            <td>{{customer.id}}</td>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.role}}</td>
+            <td>{{customer.customerId}}</td>
+          </tr>
+        </tbody>
+    </ng-template>
+
+      </table>
+
+  </div>
+</div>
+
+</div> -->
+
+
+
+
+
+
+<app-main-layout>
+
+ <div class="bgc">
+    
+<div class="row" > 
+
+<div class="col-3">
+    <h1 class="display-6" > Search Filter</h1>
+    <ul class="list-group mt-5">
+    <etiya-input [(ngModel)]="customerFilter.id" [inputLabel]="'ID Number'" [inputType]="'number'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.customerId"  [inputLabel]="'Customer ID'" [inputType]="'number'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.accountNumber" [inputLabel]="'Account Number'" [inputType]="'string'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.gsmNumber"  [inputLabel]="'GSM Number'" [inputType]="'string'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.firstName"  [inputLabel]="'First Name'" [inputType]="'string'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.lastName"  [inputLabel]="'Last Name'" [inputType]="'string'"></etiya-input>
+    <etiya-input [(ngModel)]="customerFilter.orderNumber" [inputLabel]="'Order Number'" [inputType]="'number'"></etiya-input>
+  </ul>
+  <div class="modal-footer d-flex justify-content-between" >
+    <etiya-button (onClickButton)="searchFilter()" [icon]="'fa-solid fa-search'" [buttonColor]="'bg-orange'" [buttonText]="'Search'"></etiya-button>
+    <etiya-button (onClickButton)="clearFilter()" [icon]="'fa-solid fa-eraser'" [buttonColor]="'bg-gray'" [buttonText]="'Clear'"  ></etiya-button>
+  </div> 
+  </div>
+
+  <div class="col-8 ">    
+        <h1 class="display-6" >Search Results</h1>
+    <table class="table mt-5">
+
+        <thead class="thead-light" >
+          <tr>
+            <th ><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+            <th scope="col">Customer ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">ID number</th>
+
+          </tr>
+        </thead >
+        <ng-container *ngIf="!filterApplied">
+          <app-pop-up *ngIf="show"></app-pop-up>
+        </ng-container>
+        <ng-template *ngIf="filterApplied"
+        ngFor
+        let-customer
+        [ngForOf]="
+          customers
+        "
+      >
+        <tbody>
+          <tr>
+            <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+            <td>{{customer.id}}</td>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.role}}</td>
+            <td>{{customer.customerId}}</td>
+          </tr>
+        </tbody>
+    </ng-template>
+
+      </table>
+
+  </div>
+</div>
+
+</div> 
+</app-main-layout>
+
+
+
+
